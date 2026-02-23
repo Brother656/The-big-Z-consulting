@@ -1,0 +1,1307 @@
+<!doctype html>
+<html lang="fr" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      The Z Consulting | Conseil Stratégique, BTP & Digital au Cameroun
+    </title>
+    <meta
+      name="description"
+      content="Cabinet de conseil stratégique camerounais spécialisé en planification BTP, structuration organisationnelle, analyse financière et développement digital."
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Tailwind CSS (CDN pour Vercel/Static) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1a365d",
+              secondary: "#2d3748",
+              accent: "#2563eb",
+              light: "#f8fafc",
+            },
+            fontFamily: {
+              sans: ["Inter", "sans-serif"],
+              serif: ["Playfair Display", "serif"],
+            },
+            boxShadow: {
+              soft: "0 4px 20px -2px rgba(0, 0, 0, 0.05)",
+              glow: "0 0 15px rgba(37, 99, 235, 0.3)",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Custom Styles & Animations */
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      /* Reveal Animation on Scroll */
+      .reveal {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+      }
+      .reveal.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+      /* Hero Gradient Overlay */
+      .hero-bg {
+        background:
+          linear-gradient(
+            135deg,
+            rgba(26, 54, 93, 0.95) 0%,
+            rgba(37, 99, 235, 0.85) 100%
+          ),
+          url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070&auto=format&fit=crop")
+            center/cover;
+      }
+      /* Card Hover Effects */
+      .service-card {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .service-card:hover {
+        transform: translateY(-5px);
+        box-shadow:
+          0 10px 25px -5px rgba(0, 0, 0, 0.1),
+          0 8px 10px -6px rgba(0, 0, 0, 0.1);
+      }
+      /* FAQ Accordion */
+      .faq-content {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+
+      /* Custom Scrollbar */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #f1f1f1;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1a365d;
+        border-radius: 4px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #2563eb;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-secondary bg-light">
+    <!-- Navbar -->
+    <header
+      id="navbar"
+      class="fixed w-full top-0 z-50 transition-all duration-300 bg-white/95 backdrop-blur-sm shadow-sm"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-20">
+          <!-- Logo -->
+          <div
+            class="flex-shrink-0 flex items-center cursor-pointer"
+            onclick="window.scrollTo(0, 0)"
+          >
+            <span
+              class="font-serif font-bold text-2xl text-primary tracking-tight"
+              >The <span class="text-accent">Z</span> Consulting</span
+            >
+          </div>
+
+          <!-- Desktop Menu -->
+          <nav class="hidden md:flex space-x-8">
+            <a
+              href="#about"
+              class="text-secondary hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+              >À propos</a
+            >
+            <a
+              href="#services"
+              class="text-secondary hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+              >Services</a
+            >
+            <a
+              href="#digital"
+              class="text-secondary hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+              >Digital</a
+            >
+            <a
+              href="#pricing"
+              class="text-secondary hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+              >Tarifs</a
+            >
+            <a
+              href="#contact"
+              class="text-secondary hover:text-accent font-medium transition-colors text-sm uppercase tracking-wide"
+              >Contact</a
+            >
+          </nav>
+          <!-- CTA Button -->
+          <div class="hidden md:flex">
+            <a
+              href="#contact"
+              class="bg-primary hover:bg-accent text-white px-6 py-2 rounded-full font-medium transition-colors duration-300 shadow-soft text-sm"
+            >
+              Diagnostic Gratuit
+            </a>
+          </div>
+          <!-- Mobile menu button -->
+          <div class="md:hidden flex items-center">
+            <button
+              id="mobile-menu-btn"
+              class="text-primary hover:text-accent focus:outline-none p-2"
+            >
+              <i class="fas fa-bars text-2xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- Mobile Menu Panel -->
+      <div
+        id="mobile-menu"
+        class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-lg"
+      >
+        <div class="px-4 pt-2 pb-6 space-y-1">
+          <a
+            href="#about"
+            class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md"
+            >À propos</a
+          >
+          <a
+            href="#services"
+            class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md"
+            >Nos Services</a
+          >
+          <a
+            href="#digital"
+            class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md"
+            >Solutions Digitales</a
+          >
+          <a
+            href="#pricing"
+            class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md"
+            >Tarifs</a
+          >
+          <a
+            href="#contact"
+            class="block px-3 py-3 text-base font-medium text-secondary hover:text-accent hover:bg-gray-50 rounded-md"
+            >Contact</a
+          >
+          <a
+            href="#contact"
+            class="block mt-4 w-full text-center bg-primary text-white px-6 py-3 rounded-md font-medium"
+            >Diagnostic Gratuit</a
+          >
+        </div>
+      </div>
+    </header>
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="hero-bg relative min-h-screen flex items-center pt-20"
+    >
+      <div class="absolute inset-0 bg-primary/40"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="max-w-3xl reveal active">
+          <span
+            class="inline-block py-1 px-3 rounded-full bg-white/20 text-white backdrop-blur-sm text-sm font-semibold tracking-wider mb-4 border border-white/30"
+          >
+            EXCELLENCE & VISION STRATÉGIQUE
+          </span>
+          <h1
+            class="text-4xl md:text-5xl lg:text-7xl font-serif font-bold text-white leading-tight mb-6"
+          >
+            Structurer aujourd'hui. <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-300 to-white"
+              >Sécuriser demain.</span
+            >
+          </h1>
+          <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl font-light">
+            Cabinet de conseil stratégique camerounais spécialisé en
+            planification BTP, analyse financière et développement digital sur
+            mesure pour la croissance de votre entreprise.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4">
+            <a
+              href="#contact"
+              class="bg-accent hover:bg-blue-700 text-white px-8 py-4 rounded-full font-medium transition-all text-center shadow-glow"
+            >
+              Démarrer un projet
+            </a>
+            <a
+              href="#services"
+              class="bg-white/10 hover:bg-white/20 text-white border border-white/30 px-8 py-4 rounded-full font-medium transition-all text-center backdrop-blur-sm"
+            >
+              Découvrir nos services
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div
+        class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce hidden md:block"
+      >
+        <a href="#about" class="text-white/70 hover:text-white">
+          <i class="fas fa-chevron-down text-2xl"></i>
+        </a>
+      </div>
+    </section>
+    <!-- À Propos / Stats Section -->
+    <section id="about" class="py-20 md:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div class="reveal">
+            <h2
+              class="text-accent font-semibold tracking-wide uppercase text-sm mb-2"
+            >
+              À Propos de Nous
+            </h2>
+            <h3
+              class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6"
+            >
+              L'architecture de votre succès commence ici.
+            </h3>
+            <p class="text-gray-600 mb-6 leading-relaxed">
+              The Z Consulting est né d'une vision claire : apporter aux
+              entreprises africaines, en particulier au Cameroun, la rigueur
+              structurelle et l'innovation technologique nécessaires pour
+              exceller dans un marché compétitif.
+            </p>
+            <div class="space-y-4 mb-8">
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mt-1"
+                >
+                  <i class="fas fa-check text-accent text-xs"></i>
+                </div>
+                <p class="ml-3 text-gray-600">
+                  <strong class="text-primary">Excellence :</strong> Qualité
+                  irréprochable dans nos livrables.
+                </p>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mt-1"
+                >
+                  <i class="fas fa-check text-accent text-xs"></i>
+                </div>
+                <p class="ml-3 text-gray-600">
+                  <strong class="text-primary">Intégrité :</strong> Transparence
+                  et confidentialité absolue.
+                </p>
+              </div>
+              <div class="flex items-start">
+                <div
+                  class="flex-shrink-0 h-6 w-6 rounded-full bg-blue-100 flex items-center justify-center mt-1"
+                >
+                  <i class="fas fa-check text-accent text-xs"></i>
+                </div>
+                <p class="ml-3 text-gray-600">
+                  <strong class="text-primary">Innovation :</strong> Solutions
+                  digitales à la pointe.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 reveal">
+            <div
+              class="bg-light p-8 rounded-2xl border border-gray-100 shadow-soft text-center"
+            >
+              <div class="text-4xl font-bold text-primary mb-2">
+                <span class="counter" data-target="50">0</span>+
+              </div>
+              <div class="text-sm text-gray-500 font-medium">
+                Projets Réalisés
+              </div>
+            </div>
+            <div
+              class="bg-primary p-8 rounded-2xl shadow-soft text-center transform translate-y-4"
+            >
+              <div class="text-4xl font-bold text-white mb-2">
+                <span class="counter" data-target="30">0</span>+
+              </div>
+              <div class="text-sm text-blue-200 font-medium">
+                Clients Satisfaits
+              </div>
+            </div>
+            <div class="bg-accent p-8 rounded-2xl shadow-soft text-center">
+              <div class="text-4xl font-bold text-white mb-2">
+                <span class="counter" data-target="95">0</span>%
+              </div>
+              <div class="text-sm text-blue-100 font-medium">
+                Taux de Satisfaction
+              </div>
+            </div>
+            <div
+              class="bg-light p-8 rounded-2xl border border-gray-100 shadow-soft text-center transform translate-y-4"
+            >
+              <div class="text-4xl font-bold text-primary mb-2">
+                <span class="counter" data-target="28">0</span>+
+              </div>
+              <div class="text-sm text-gray-500 font-medium">
+                Projets Digitaux
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 md:py-32 bg-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2
+            class="text-accent font-semibold tracking-wide uppercase text-sm mb-2"
+          >
+            Domaines d'Expertise
+          </h2>
+          <h3
+            class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4"
+          >
+            Nos Services Principaux
+          </h3>
+          <p class="text-gray-600">
+            Des solutions sur mesure pour structurer votre entreprise, optimiser
+            vos finances et accélérer votre transformation digitale.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <!-- Service 1 -->
+          <div
+            class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-sm reveal"
+          >
+            <div
+              class="h-14 w-14 rounded-lg bg-blue-50 flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-hard-hat text-2xl text-accent"></i>
+            </div>
+            <h4 class="text-xl font-bold text-primary mb-3">
+              Planification BTP
+            </h4>
+            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+              Élaboration de plannings stratégiques, suivi d'avancement
+              rigoureux et gestion des risques pour garantir la livraison de vos
+              chantiers dans les délais et budgets.
+            </p>
+            <ul class="text-sm text-gray-500 space-y-2">
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i>
+                Ordonnancement & Pilotage
+              </li>
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i> Audit de
+                chantiers
+              </li>
+            </ul>
+          </div>
+          <!-- Service 2 -->
+          <div
+            class="service-card bg-white p-8 rounded-2xl border border-gray-100 shadow-sm reveal"
+            style="transition-delay: 100ms"
+          >
+            <div
+              class="h-14 w-14 rounded-lg bg-blue-50 flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-chart-line text-2xl text-accent"></i>
+            </div>
+            <h4 class="text-xl font-bold text-primary mb-3">
+              Analyse Financière
+            </h4>
+            <p class="text-gray-600 mb-4 text-sm leading-relaxed">
+              Diagnostic de santé financière, audit simplifié et élaboration de
+              rapports stratégiques pour des prises de décisions éclairées et
+              sécurisées.
+            </p>
+            <ul class="text-sm text-gray-500 space-y-2">
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i> Business
+                Plans
+              </li>
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i> Optimisation
+                des coûts
+              </li>
+            </ul>
+          </div>
+          <!-- Service 3 -->
+          <div
+            class="service-card bg-primary p-8 rounded-2xl shadow-soft reveal"
+            style="transition-delay: 200ms"
+          >
+            <div
+              class="h-14 w-14 rounded-lg bg-white/10 flex items-center justify-center mb-6"
+            >
+              <i class="fas fa-laptop-code text-2xl text-white"></i>
+            </div>
+            <h4 class="text-xl font-bold text-white mb-3">
+              Développement Digital
+            </h4>
+            <p class="text-blue-100 mb-4 text-sm leading-relaxed">
+              Conception d'outils digitaux performants : sites web vitrines,
+              e-commerce, applications sur mesure pour automatiser et moderniser
+              vos processus.
+            </p>
+            <ul class="text-sm text-blue-200 space-y-2">
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i> Sites Web &
+                Plateformes
+              </li>
+              <li>
+                <i class="fas fa-angle-right text-accent mr-2"></i> Applications
+                Mobiles
+              </li>
+            </ul>
+            <a
+              href="#digital"
+              class="inline-block mt-6 text-white font-medium hover:text-accent transition-colors text-sm"
+            >
+              Voir les solutions digitales
+              <i class="fas fa-arrow-right ml-1"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Digital Solutions Deep Dive -->
+    <section id="digital" class="py-20 md:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-col lg:flex-row gap-16 items-center">
+          <div class="w-full lg:w-1/2 reveal">
+            <!-- Placeholder pour image conceptuelle -->
+            <div
+              class="relative rounded-2xl overflow-hidden shadow-2xl aspect-[4/3] bg-gradient-to-br from-gray-100 to-gray-200 flex items-center justify-center group"
+            >
+              <div
+                class="absolute inset-0 bg-primary/10 group-hover:bg-primary/0 transition-all duration-500"
+              ></div>
+              <i class="fas fa-code text-6xl text-gray-300"></i>
+              <div
+                class="absolute bottom-4 left-4 right-4 bg-white/90 backdrop-blur p-4 rounded-xl border border-white/50"
+              >
+                <p class="text-sm font-semibold text-primary">
+                  <i class="fab fa-react text-accent mr-2"></i> React • Node.js
+                  • PHP • Python
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="w-full lg:w-1/2 reveal">
+            <h2
+              class="text-accent font-semibold tracking-wide uppercase text-sm mb-2"
+            >
+              Pôle Technologique
+            </h2>
+            <h3
+              class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6"
+            >
+              Solutions Digitales Performantes
+            </h3>
+            <p class="text-gray-600 mb-8">
+              Nous développons des écosystèmes digitaux sécurisés et évolutifs
+              pour répondre aux besoins spécifiques de votre marché.
+            </p>
+
+            <div class="space-y-6">
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center"
+                  >
+                    <i class="fas fa-globe text-accent"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-bold text-primary">
+                    Sites Web Vitrine & E-commerce
+                  </h4>
+                  <p class="text-sm text-gray-500 mt-1">
+                    Conception UI/UX premium, optimisation SEO, et tunnels de
+                    conversion efficaces. (À partir de 350k FCFA)
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center"
+                  >
+                    <i class="fas fa-cogs text-accent"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-bold text-primary">
+                    Plateformes Métier & Automatisation
+                  </h4>
+                  <p class="text-sm text-gray-500 mt-1">
+                    Outils internes sur mesure pour digitaliser vos processus
+                    RH, financiers ou logistiques.
+                  </p>
+                </div>
+              </div>
+              <div class="flex">
+                <div class="flex-shrink-0 mt-1">
+                  <div
+                    class="h-10 w-10 rounded-full bg-blue-50 flex items-center justify-center"
+                  >
+                    <i class="fas fa-shield-alt text-accent"></i>
+                  </div>
+                </div>
+                <div class="ml-4">
+                  <h4 class="text-lg font-bold text-primary">
+                    Maintenance & Sécurité
+                  </h4>
+                  <p class="text-sm text-gray-500 mt-1">
+                    Hébergement sécurisé, sauvegardes régulières et mises à jour
+                    de vos infrastructures. (Dès 50k FCFA/mois)
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 md:py-32 bg-light">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center max-w-3xl mx-auto mb-16 reveal">
+          <h2
+            class="text-accent font-semibold tracking-wide uppercase text-sm mb-2"
+          >
+            Investissement
+          </h2>
+          <h3
+            class="text-3xl md:text-4xl font-serif font-bold text-primary mb-4"
+          >
+            Des offres transparentes
+          </h3>
+          <p class="text-gray-600">
+            Choisissez le pack digital adapté à votre croissance ou demandez un
+            devis pour nos services de conseil BTP et audit.
+          </p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
+          <!-- Pack Essentiel -->
+          <div
+            class="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow reveal"
+          >
+            <h4 class="text-xl font-bold text-primary mb-2">Pack Essentiel</h4>
+            <p class="text-gray-500 text-sm mb-6">
+              Idéal pour les startups et artisans pour une première présence en
+              ligne.
+            </p>
+            <div class="mb-6">
+              <span class="text-3xl font-bold text-primary">350 000</span>
+              <span class="text-gray-500 font-medium">FCFA</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-sm text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Site vitrine
+                (jusqu'à 5 pages)
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Design
+                responsive & moderne
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Formulaire de
+                contact
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Optimisation
+                SEO basique
+              </li>
+              <li class="flex items-center text-gray-400">
+                <i class="fas fa-times mr-3"></i> Système de paiement en ligne
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              onclick="setServiceType('essentiel')"
+              class="block w-full py-3 px-4 bg-gray-50 text-primary font-medium text-center rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+              >Choisir ce pack</a
+            >
+          </div>
+          <!-- Pack Business (Highlight) -->
+          <div
+            class="bg-primary rounded-2xl p-8 shadow-xl transform md:-translate-y-4 relative reveal"
+            style="transition-delay: 100ms"
+          >
+            <div
+              class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
+            >
+              <span
+                class="bg-accent text-white text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full"
+                >Plus Populaire</span
+              >
+            </div>
+            <h4 class="text-xl font-bold text-white mb-2">Pack Business</h4>
+            <p class="text-blue-200 text-sm mb-6">
+              Pour les PME souhaitant digitaliser leurs ventes et processus.
+            </p>
+            <div class="mb-6">
+              <span class="text-4xl font-bold text-white">750 000</span>
+              <span class="text-blue-200 font-medium">FCFA</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-sm text-blue-50">
+              <li class="flex items-center">
+                <i class="fas fa-check text-accent mr-3"></i> Site e-commerce ou
+                dynamique
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-accent mr-3"></i> Intégration
+                paiement (Mobile Money)
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-accent mr-3"></i> Outils de gestion
+                de base
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-accent mr-3"></i> SEO Avancé &
+                Google Analytics
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-accent mr-3"></i> 1 mois de
+                maintenance inclus
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              onclick="setServiceType('business')"
+              class="block w-full py-3 px-4 bg-accent text-white font-medium text-center rounded-lg hover:bg-blue-600 transition-colors shadow-glow"
+              >Choisir ce pack</a
+            >
+          </div>
+          <!-- Pack Premium -->
+          <div
+            class="bg-white rounded-2xl border border-gray-200 p-8 shadow-sm hover:shadow-md transition-shadow reveal"
+            style="transition-delay: 200ms"
+          >
+            <h4 class="text-xl font-bold text-primary mb-2">
+              Pack Premium / Sur Mesure
+            </h4>
+            <p class="text-gray-500 text-sm mb-6">
+              Pour des plateformes métiers complexes et applications.
+            </p>
+            <div class="mb-6">
+              <span class="text-3xl font-bold text-primary">Sur Devis</span>
+            </div>
+            <ul class="space-y-3 mb-8 text-sm text-gray-600">
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Plateforme web
+                complète
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Application
+                mobile (iOS/Android)
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Automatisation
+                interne avancée
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> Conseil
+                stratégique & BTP
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check text-green-500 mr-3"></i> SLA et
+                Maintenance dédiée
+              </li>
+            </ul>
+            <a
+              href="#contact"
+              onclick="setServiceType('sur-mesure')"
+              class="block w-full py-3 px-4 bg-gray-50 text-primary font-medium text-center rounded-lg border border-gray-200 hover:bg-gray-100 transition-colors"
+              >Demander un devis</a
+            >
+          </div>
+        </div>
+
+        <p class="text-center text-sm text-gray-500 mt-8 reveal">
+          Pour les services d'<strong>Analyse Financière</strong> et
+          <strong>Planification BTP</strong>, chaque projet fait l'objet d'un
+          audit préalable et d'un devis sur mesure garantissant la plus stricte
+          confidentialité.
+        </p>
+      </div>
+    </section>
+    <!-- Contact & FAQ Section -->
+    <section id="contact" class="py-20 md:py-32 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+          <!-- Contact Info & FAQ -->
+          <div class="reveal">
+            <h2
+              class="text-accent font-semibold tracking-wide uppercase text-sm mb-2"
+            >
+              Contactez-nous
+            </h2>
+            <h3
+              class="text-3xl md:text-4xl font-serif font-bold text-primary mb-6"
+            >
+              Prêt à structurer votre avenir ?
+            </h3>
+            <p class="text-gray-600 mb-8">
+              Obtenez un diagnostic gratuit. Notre équipe vous répondra dans les
+              24 heures pour planifier un premier échange stratégique.
+            </p>
+
+            <div class="space-y-4 mb-10">
+              <div class="flex items-center">
+                <div
+                  class="h-12 w-12 rounded-full bg-light flex items-center justify-center mr-4 border border-gray-100"
+                >
+                  <i class="fas fa-map-marker-alt text-accent"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-primary">Localisation</h5>
+                  <p class="text-sm text-gray-600">Yaoundé, Cameroun</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="h-12 w-12 rounded-full bg-light flex items-center justify-center mr-4 border border-gray-100"
+                >
+                  <i class="fas fa-phone-alt text-accent"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-primary">
+                    Téléphone / WhatsApp
+                  </h5>
+                  <p class="text-sm text-gray-600">+237 692 685 980</p>
+                </div>
+              </div>
+              <div class="flex items-center">
+                <div
+                  class="h-12 w-12 rounded-full bg-light flex items-center justify-center mr-4 border border-gray-100"
+                >
+                  <i class="fas fa-envelope text-accent"></i>
+                </div>
+                <div>
+                  <h5 class="text-sm font-bold text-primary">Email</h5>
+                  <p class="text-sm text-gray-600">
+                    christiankemda2000@gmail.com
+                  </p>
+                </div>
+              </div>
+            </div>
+            <!-- FAQ -->
+            <div class="mt-12">
+              <h4 class="text-xl font-bold text-primary mb-4">
+                Questions Fréquentes
+              </h4>
+              <div class="space-y-3">
+                <!-- FAQ Item 1 -->
+                <div
+                  class="border border-gray-200 rounded-lg bg-light overflow-hidden"
+                >
+                  <button
+                    class="faq-btn w-full text-left px-5 py-4 flex justify-between items-center focus:outline-none"
+                  >
+                    <span class="font-medium text-primary text-sm"
+                      >Comment se déroule le diagnostic gratuit ?</span
+                    >
+                    <i
+                      class="fas fa-chevron-down text-gray-400 transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="faq-content bg-white px-5">
+                    <p class="pb-4 text-sm text-gray-600">
+                      Il s'agit d'un entretien de 30 minutes (visio ou
+                      présentiel) pour comprendre vos enjeux, évaluer la
+                      faisabilité et identifier les premiers leviers d'action
+                      sans engagement.
+                    </p>
+                  </div>
+                </div>
+                <!-- FAQ Item 2 -->
+                <div
+                  class="border border-gray-200 rounded-lg bg-light overflow-hidden"
+                >
+                  <button
+                    class="faq-btn w-full text-left px-5 py-4 flex justify-between items-center focus:outline-none"
+                  >
+                    <span class="font-medium text-primary text-sm"
+                      >Garantissez-vous la confidentialité ?</span
+                    >
+                    <i
+                      class="fas fa-chevron-down text-gray-400 transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="faq-content bg-white px-5">
+                    <p class="pb-4 text-sm text-gray-600">
+                      Absolument. Un accord de confidentialité (NDA) est
+                      systématiquement signé avant toute mission d'analyse
+                      financière ou de structuration BTP.
+                    </p>
+                  </div>
+                </div>
+                <!-- FAQ Item 3 -->
+                <div
+                  class="border border-gray-200 rounded-lg bg-light overflow-hidden"
+                >
+                  <button
+                    class="faq-btn w-full text-left px-5 py-4 flex justify-between items-center focus:outline-none"
+                  >
+                    <span class="font-medium text-primary text-sm"
+                      >Quels sont les délais pour un site web ?</span
+                    >
+                    <i
+                      class="fas fa-chevron-down text-gray-400 transition-transform duration-300"
+                    ></i>
+                  </button>
+                  <div class="faq-content bg-white px-5">
+                    <p class="pb-4 text-sm text-gray-600">
+                      Pour un Pack Essentiel (vitrine), comptez 2 à 3 semaines.
+                      Pour un e-commerce ou du sur-mesure, le délai varie de 1 à
+                      3 mois selon la complexité.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Contact Form -->
+          <div
+            class="bg-white p-8 rounded-2xl border border-gray-100 shadow-xl reveal"
+          >
+            <h4 class="text-2xl font-bold text-primary mb-6">
+              Demander un Devis / Diagnostic
+            </h4>
+            <form
+              action="https://formspree.io/f/xojnprkn"
+              id="contactForm"
+              onsubmit="handleFormSubmit(event)"
+              class="space-y-5"
+              method="POST"
+            >
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    for="name"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Nom complet *</label
+                  >
+                  <input
+                    name="nom"
+                    type="text"
+                    id="name"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="company"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Entreprise</label
+                  >
+                  <input
+                    name="entreprise"
+                    type="text"
+                    id="company"
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+              </div>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div>
+                  <label
+                    for="email"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Email *</label
+                  >
+                  <input
+                    name="email"
+                    type="email"
+                    id="email"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+                <div>
+                  <label
+                    for="phone"
+                    class="block text-sm font-medium text-gray-700 mb-1"
+                    >Téléphone *</label
+                  >
+                  <input
+                    name="telephone"
+                    type="tel"
+                    id="phone"
+                    required
+                    class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors"
+                  />
+                </div>
+              </div>
+              <div>
+                <label
+                  for="serviceType"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Service souhaité *</label
+                >
+                <select
+                  id="serviceType"
+                  name="type_de_service"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors bg-white"
+                >
+                  <option value="" disabled selected>
+                    Sélectionnez un service
+                  </option>
+                  <option value="diagnostic">
+                    Diagnostic Gratuit (Général)
+                  </option>
+                  <option value="btp">Planification & Audit BTP</option>
+                  <option value="finance">Analyse Financière</option>
+                  <option value="essentiel">Digital - Pack Essentiel</option>
+                  <option value="business">Digital - Pack Business</option>
+                  <option value="sur-mesure">
+                    Digital - Projet Sur Mesure
+                  </option>
+                </select>
+              </div>
+              <div>
+                <label
+                  for="message"
+                  class="block text-sm font-medium text-gray-700 mb-1"
+                  >Votre message *</label
+                >
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  required
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent outline-none transition-colors resize-none"
+                  placeholder="Décrivez brièvement votre besoin..."
+                ></textarea>
+              </div>
+
+              <!-- Form Alert Box (Hidden by default) -->
+              <div
+                id="formAlert"
+                class="hidden p-4 rounded-lg text-sm font-medium"
+              ></div>
+              <button
+                type="submit"
+                id="submitBtn"
+                class="w-full bg-primary hover:bg-accent text-white py-3 rounded-lg font-medium transition-colors shadow-soft flex justify-center items-center"
+              >
+                <span>Envoyer la demande</span>
+                <i class="fas fa-paper-plane ml-2 text-sm"></i>
+              </button>
+              <p class="text-xs text-gray-400 text-center mt-3">
+                <i class="fas fa-lock mr-1"></i> Vos données sont sécurisées et
+                strictement confidentielles.
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-primary pt-16 pb-8 border-t border-blue-900">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          <div class="col-span-1 md:col-span-2">
+            <span
+              class="font-serif font-bold text-2xl text-white tracking-tight mb-4 inline-block"
+              >The <span class="text-accent">Z</span> Consulting</span
+            >
+            <p class="text-blue-200 text-sm max-w-sm mb-6 leading-relaxed">
+              Cabinet de conseil stratégique accompagnant la croissance des
+              entreprises par la structuration organisationnelle, la rigueur
+              financière et l'innovation digitale.
+            </p>
+            <div class="flex space-x-4">
+              <a
+                href="https://web.facebook.com/profile.php?id=61588258707807"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-accent transition-colors"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://wa.me/237692685980"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="h-10 w-10 rounded-full bg-white/10 flex items-center justify-center text-white hover:bg-green-500 transition-colors"
+              >
+                <i class="fab fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div>
+            <h5 class="text-white font-bold mb-4">Liens Rapides</h5>
+            <ul class="space-y-2 text-sm text-blue-200">
+              <li>
+                <a href="#about" class="hover:text-white transition-colors"
+                  >À propos de nous</a
+                >
+              </li>
+              <li>
+                <a href="#services" class="hover:text-white transition-colors"
+                  >Nos services</a
+                >
+              </li>
+              <li>
+                <a href="#digital" class="hover:text-white transition-colors"
+                  >Solutions digitales</a
+                >
+              </li>
+              <li>
+                <a href="#pricing" class="hover:text-white transition-colors"
+                  >Tarifs & Packs</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h5 class="text-white font-bold mb-4">Légal & Horaires</h5>
+            <ul class="space-y-2 text-sm text-blue-200">
+              <li>Lun - Sam : 08h00 - 18h00</li>
+              <li>Dimanche : Fermé</li>
+              <li class="pt-2">
+                <a href="#" class="hover:text-white transition-colors"
+                  >Mentions légales</a
+                >
+              </li>
+              <li>
+                <a href="#" class="hover:text-white transition-colors"
+                  >Politique de confidentialité</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div
+          class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center"
+        >
+          <p class="text-blue-300 text-sm mb-4 md:mb-0">
+            &copy; 2026 The Z Consulting. Tous droits réservés.
+          </p>
+          <p class="text-blue-300 text-sm flex items-center">
+            Fait avec <i class="fas fa-heart text-red-500 mx-1"></i> au Cameroun
+            par Brother Ced.
+          </p>
+        </div>
+      </div>
+    </footer>
+    <!-- Floating WhatsApp Button -->
+    <a
+      href="https://wa.me/237692685980"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="fixed bottom-6 right-6 bg-green-500 text-white rounded-full p-4 shadow-lg hover:bg-green-600 transition-all z-50 flex items-center justify-center group hover:scale-110"
+    >
+      <i class="fab fa-whatsapp text-3xl"></i>
+      <!-- Pulse animation -->
+      <span
+        class="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-40 group-hover:animate-ping -z-10"
+      ></span>
+    </a>
+    <!-- Scripts Javascript -->
+    <script>
+      // 1. Mobile Menu Toggle
+      const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+      const mobileMenu = document.getElementById("mobile-menu");
+      const mobileLinks = mobileMenu.querySelectorAll("a");
+      mobileMenuBtn.addEventListener("click", () => {
+        mobileMenu.classList.toggle("hidden");
+      });
+      // Close mobile menu when a link is clicked
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          mobileMenu.classList.add("hidden");
+        });
+      });
+      // 2. Navbar Scroll Effect
+      const navbar = document.getElementById("navbar");
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > 20) {
+          navbar.classList.add("shadow-md");
+          navbar.classList.remove("shadow-sm", "bg-white/95");
+          navbar.classList.add("bg-white");
+        } else {
+          navbar.classList.remove("shadow-md", "bg-white");
+          navbar.classList.add("shadow-sm", "bg-white/95");
+        }
+      });
+      // 3. Scroll Reveal Animation via Intersection Observer
+      const revealElements = document.querySelectorAll(".reveal");
+
+      const revealObserver = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("active");
+              revealObserver.unobserve(entry.target); // Trigger only once
+            }
+          });
+        },
+        {
+          threshold: 0.1,
+          rootMargin: "0px 0px -50px 0px",
+        },
+      );
+      revealElements.forEach((el) => revealObserver.observe(el));
+      // 4. Animated Counters
+      const counters = document.querySelectorAll(".counter");
+      const counterObserver = new IntersectionObserver(
+        (entries, observer) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const target = parseInt(entry.target.getAttribute("data-target"));
+              let count = 0;
+              const duration = 2000; // ms
+              const increment = target / (duration / 16); // 60fps
+
+              const updateCount = () => {
+                count += increment;
+                if (count < target) {
+                  entry.target.innerText = Math.ceil(count);
+                  requestAnimationFrame(updateCount);
+                } else {
+                  entry.target.innerText = target;
+                }
+              };
+              updateCount();
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.5 },
+      );
+      counters.forEach((counter) => counterObserver.observe(counter));
+      // 5. FAQ Accordion Logic
+      const faqBtns = document.querySelectorAll(".faq-btn");
+      faqBtns.forEach((btn) => {
+        btn.addEventListener("click", function () {
+          // Toggle icon
+          const icon = this.querySelector("i");
+          icon.classList.toggle("rotate-180");
+
+          // Toggle content max-height
+          const content = this.nextElementSibling;
+          if (content.style.maxHeight) {
+            content.style.maxHeight = null;
+          } else {
+            // close all others (optional)
+            document.querySelectorAll(".faq-content").forEach((el) => {
+              if (el !== content) el.style.maxHeight = null;
+            });
+            document.querySelectorAll(".faq-btn i").forEach((el) => {
+              if (el !== icon) el.classList.remove("rotate-180");
+            });
+
+            content.style.maxHeight = content.scrollHeight + "px";
+          }
+        });
+      });
+      // 6. Pre-fill Form based on Pricing Selection
+      function setServiceType(type) {
+        const select = document.getElementById("serviceType");
+        if (select) {
+          select.value = type;
+        }
+      }
+      // Parse URL parameters if any (e.g., ?type=diagnostic)
+      const urlParams = new URLSearchParams(window.location.search);
+      const urlType = urlParams.get("type") || urlParams.get("service");
+      if (urlType) {
+        setServiceType(urlType);
+      }
+      // 7. Form Validation & Submit via AJAX to Formspree
+      async function handleFormSubmit(e) {
+        e.preventDefault();
+
+        const btn = document.getElementById("submitBtn");
+        const alertBox = document.getElementById("formAlert");
+        const form = document.getElementById("contactForm");
+        const originalText = btn.innerHTML;
+
+        // Show loading state
+        btn.innerHTML =
+          '<i class="fas fa-circle-notch fa-spin mr-2"></i> Envoi en cours...';
+        btn.disabled = true;
+        btn.classList.add("opacity-75");
+
+        // Prepare form data
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch(form.action, {
+            method: "POST",
+            body: formData,
+            headers: {
+              Accept: "application/json",
+            },
+          });
+
+          if (response.ok) {
+            // Show success message
+            alertBox.className =
+              "p-4 rounded-lg text-sm font-medium bg-green-50 text-green-800 border border-green-200 block";
+            alertBox.innerHTML =
+              '<i class="fas fa-check-circle mr-2"></i> Votre demande a été envoyée avec succès ! Notre équipe vous contactera sous 24h.';
+            form.reset();
+          } else {
+            // Show error message
+            alertBox.className =
+              "p-4 rounded-lg text-sm font-medium bg-red-50 text-red-800 border border-red-200 block";
+            alertBox.innerHTML =
+              '<i class="fas fa-exclamation-circle mr-2"></i> Une erreur est survenue. Veuillez réessayer.';
+          }
+        } catch (error) {
+          // Show error message
+          alertBox.className =
+            "p-4 rounded-lg text-sm font-medium bg-red-50 text-red-800 border border-red-200 block";
+          alertBox.innerHTML =
+            '<i class="fas fa-exclamation-circle mr-2"></i> Une erreur est survenue. Veuillez réessayer.';
+        } finally {
+          // Reset button
+          btn.innerHTML = originalText;
+          btn.disabled = false;
+          btn.classList.remove("opacity-75");
+
+          // Hide alert after 5 seconds
+          setTimeout(() => {
+            alertBox.classList.add("hidden");
+            alertBox.classList.remove("block");
+          }, 5000);
+        }
+      }
+    </script>
+  </body>
+</html>
